@@ -1,0 +1,38 @@
+body{
+    background-color: #e8d7f1;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.weather-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+
+}
+
+.weatherCard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
+
+    border-radius: 20px;
+    height: 50%;
+
+    padding: 20px;
+
+    background-color: white;
+}
