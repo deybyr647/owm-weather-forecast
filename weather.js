@@ -12,7 +12,6 @@ let capitalizeStr = (str) => {
     }
 
     return splitStr.join(' ');
-
 }
 
 let displayWeather = (weatherObj) => {
