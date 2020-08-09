@@ -1,16 +1,9 @@
-let weatherContainer = document.querySelector('.weather-container');
 let body = document.querySelector('body');
-let owm = `https://api.openweathermap.org/data/2.5/weather?zip=11722,us&appid=adb117b6500a18ac7ad60e3d23b0ac24&lang=en&units=imperial`;
+let weatherContainer = document.querySelector('.weather-container');
 
-fetch(owm)
-    .then((response) => (
-        response.json()
-    ))
-
-    .then((weatherObj) => {
-        console.log(weatherObj);
-        currentWeather(weatherObj);
-    })
+let zipInput = document.querySelector('#zipCode');
+let submitZip = document.querySelector('#submitBtn');
+let zipForm = document.querySelector('.cityInput');
 
 let capitalizeStr = (str) => {
     let splitStr = str.toLowerCase().split(' ');
@@ -22,7 +15,7 @@ let capitalizeStr = (str) => {
 
 }
 
-let currentWeather = (weatherObj) => {
+let displayWeather = (weatherObj) => {
     let city = document.querySelector('.city');
     city.innerHTML = weatherObj.name;
 
@@ -58,4 +51,24 @@ let currentWeather = (weatherObj) => {
     weatherCard.appendChild(humidityPercentage);
 
     weatherContainer.appendChild(weatherCard);
+}
+
+let getWeather = (zip) => {
+    let owm = `https://api.openweathermap.org/data/2.5/weather?zip=${zip},us&appid=adb117b6500a18ac7ad60e3d23b0ac24&lang=en&units=imperial`;
+    fetch(owm)
+        .then((response) => (
+            response.json()
+        ))
+
+        .then((weatherObj) => {
+            displayWeather(weatherObj);
+        })
+}
+
+zipForm.onsubmit = (event) => {
+    event.preventDefault();
+    let zipCode = zipInput.value;
+    getWeather(zipCode);
+    zipInput.value = '';
+
 }
