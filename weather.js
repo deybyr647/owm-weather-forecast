@@ -19,38 +19,26 @@ let displayWeather = (weatherObj) => {
     let city = document.querySelector('.city');
     city.innerHTML = weatherObj.name;
 
-    let weatherCard = document.createElement('div');
-    weatherCard.className = 'weatherCard';
-
-    let weatherIcon = document.createElement('img');
+    let weatherIcon = document.querySelector('#weatherIcon');
     weatherIcon.src = `http://openweathermap.org/img/wn/${weatherObj.weather[0].icon}@2x.png`;
-    weatherCard.appendChild(weatherIcon);
 
-    let weatherDescription = document.createElement('p');
+    let weatherDescription = document.querySelector('#weatherDescription');
     weatherDescription.innerHTML = capitalizeStr(weatherObj.weather[0].description);
-    weatherCard.appendChild(weatherDescription);
 
-    let mainWeather = document.createElement('p');
+    let mainWeather = document.querySelector('#mainWeather');
     mainWeather.innerHTML = `${Math.floor(weatherObj.main.temp)} &deg`;
-    weatherCard.appendChild(mainWeather);
 
-    let feelsLike = document.createElement('p');
+    let feelsLike = document.querySelector('#feelsLike');
     feelsLike.innerHTML = `Feels Like ${Math.ceil(weatherObj.main.feels_like)} &deg`;
-    weatherCard.appendChild(feelsLike);
 
-    let windSpeed = document.createElement('p');
+    let windSpeed = document.querySelector('#windSpeed');
     windSpeed.innerHTML = `Wind: ${Math.floor(weatherObj.wind.speed)} MPH`;
-    weatherCard.appendChild(windSpeed);
 
-    let pressure = document.createElement('p');
+    let pressure = document.querySelector('#pressure');
     pressure.innerHTML = `Pressure: ${Math.ceil(weatherObj.main.pressure)} hPa`;
-    weatherCard.appendChild(pressure);
 
-    let humidityPercentage = document.createElement('p');
+    let humidityPercentage = document.querySelector('#humidity');
     humidityPercentage.innerHTML = `Humidity: ${Math.ceil(weatherObj.main.humidity)} &#37`;
-    weatherCard.appendChild(humidityPercentage);
-
-    weatherContainer.appendChild(weatherCard);
 }
 
 let getWeather = (zip) => {
@@ -71,4 +59,9 @@ zipForm.onsubmit = (event) => {
     getWeather(zipCode);
     zipInput.value = '';
 
+}
+
+window.onload = () => {
+    let zipCode = 10001;
+    getWeather(zipCode);
 }
