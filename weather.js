@@ -19,7 +19,7 @@ let displayWeather = (weatherObj) => {
     city.innerHTML = weatherObj.name;
 
     let weatherIcon = document.querySelector('#weatherIcon');
-    weatherIcon.src = `http://openweathermap.org/img/wn/${weatherObj.weather[0].icon}@2x.png`;
+    weatherIcon.src = `https://openweathermap.org/img/wn/${weatherObj.weather[0].icon}@2x.png`;
 
     let weatherDescription = document.querySelector('#weatherDescription');
     weatherDescription.innerHTML = capitalizeStr(weatherObj.weather[0].description);
